@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+// import { StatusBar } from "expo-status-bar";
+import {
+  StyleSheet,
+  Pressable,
+  Platform,
+  StatusBar,
+  SafeAreaView,
+  Keyboard,
+} from "react-native";
+import Main from "./src/Main";
 export default function App() {
+  // console.log("StatusBar", StatusBar);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Pressable onPress={(e) => Keyboard.dismiss()} style={{ flex: 1 }}>
+        <Main />
+      </Pressable>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: Platform.OS != "ios" ? StatusBar.currentHeight + 1 : 0,
+    backgroundColor: "red",
   },
 });
